@@ -277,14 +277,14 @@ impl BitcoinTransaction {
 
         let mut result = Vec::new();
 
-        result.extend(&self.version.to_le_bytes()); // 4 bytes
+        result.extend(&self.version.to_le_bytes());
         result.extend(CompactSize::new(self.inputs.len() as u64).to_bytes()); // varint
 
         for input in &self.inputs {
-            result.extend(input.to_bytes()); // each input
+            result.extend(input.to_bytes());
         }
 
-        result.extend(&self.lock_time.to_le_bytes()); // 4 bytes
+        result.extend(&self.lock_time.to_le_bytes());
 
         result
     }
